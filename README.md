@@ -7,7 +7,7 @@ A sleek React + Vite frontend built to showcase intelligent seat recommendations
 ## 🎯 Live Project
 
 🌐 **API:** [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)  
-🚀 **Frontend:** Coming soon to Netlify/Vercel
+🚀 **Frontend:** [venueninja.netlify.app](https://venueninja.netlify.app)
 
 ---
 
@@ -83,9 +83,9 @@ Make sure CORS is enabled on the backend!
 
 ## 🧪 Next Steps
 
-* [ ] Deploy to Vercel or Netlify
+* [x] Deploy to Vercel or Netlify
+* [x] Improve mobile responsiveness
 * [ ] Add loading spinners and error boundaries
-* [ ] Improve mobile responsiveness
 * [ ] Add Unsplash integration for venue imagery
 * [ ] Animate cards on hover/tap
 
