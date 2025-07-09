@@ -5,10 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import VenuePage from './pages/VenuePage';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
   { path: '/venues/:id', element: <VenuePage /> },
+  { path: '*', element: <NotFound /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
