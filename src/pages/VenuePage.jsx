@@ -5,6 +5,8 @@ import axios from 'axios';
 function VenuePage() {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageLoading, setImageLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,6 +22,43 @@ function VenuePage() {
       });
   }, [id]);
 
+  useEffect(() => {
+    if (!data) return;
+
+    const fetchImage = async () => {
+      setImageLoading(true);
+      const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+      const defaultImageUrl = 'https://images.unsplash.com/photo-1514813593393-278150499878?w=800&q=80';
+
+      try {
+        let response = await axios.get('https://api.unsplash.com/search/photos', {
+          params: { query: `${data.name} stadium`, per_page: 1, orientation: 'landscape' },
+          headers: { Authorization: `Client-ID ${accessKey}` },
+        });
+
+        if (response.data.results.length === 0) {
+          response = await axios.get('https://api.unsplash.com/search/photos', {
+            params: { query: 'stadium', per_page: 1, orientation: 'landscape' },
+            headers: { Authorization: `Client-ID ${accessKey}` },
+          });
+        }
+
+        if (response.data.results.length > 0) {
+          setImageUrl(response.data.results[0].urls.regular);
+        } else {
+          setImageUrl(defaultImageUrl);
+        }
+      } catch (err) {
+        console.error('Error fetching image from Unsplash:', err);
+        setImageUrl(defaultImageUrl);
+      } finally {
+        setImageLoading(false);
+      }
+    };
+
+    fetchImage();
+  }, [data]);
+
   const formatPrice = (price) =>
     price && price.trim() !== '' ? price : '—';
 
@@ -30,12 +69,17 @@ function VenuePage() {
     <div className="min-h-screen bg-gray-900 text-white px-4 py-8">
       <div className="max-w-4xl mx-auto">
         {/* 🔥 Venue Image Banner */}
-        <img
-            src={`https://source.unsplash.com/800x400/?${encodeURIComponent(data.name)},stadium`}
-            onError={(e) => { e.target.src = 'https://source.unsplash.com/800x400/?stadium'; }}
-            alt={`${data.name} photo`}
+        {imageLoading ? (
+          <div className="w-full h-64 bg-gray-700 rounded-lg shadow-md mb-6 flex items-center justify-center">
+            <p>Loading venue image...</p>
+          </div>
+        ) : (
+          <img
+            src={imageUrl}
+            alt={data ? `${data.name} photo` : 'Venue photo'}
             className="rounded-lg shadow-md mb-6 w-full h-64 object-cover"
-        />
+          />
+        )}
 
 
         <h1 className="text-4xl font-bold mb-2 text-center">{data.name}</h1>
