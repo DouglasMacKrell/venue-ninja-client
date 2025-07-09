@@ -22,14 +22,16 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-4xl font-bold mb-4 text-center">🥷 Venue Ninja</h1>
-      <p className="text-lg text-center mb-10">Seat recommendations for epic venues.</p>
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center p-4 sm:p-8">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold mb-4">🥷 Venue Ninja</h1>
+        <p className="text-lg">Seat recommendations for epic venues.</p>
+      </div>
 
       {loading && <p className="text-center">Loading...</p>}
       {error && <p className="text-red-400 text-center">{error}</p>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {venues.map((venue) => (
           <VenueCard key={venue.id} venue={venue} />
         ))}
