@@ -1,12 +1,103 @@
-# React + Vite
+# 🥷 Venue Ninja — Frontend UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek React + Vite frontend built to showcase intelligent seat recommendations for legendary venues like Madison Square Garden and Yankee Stadium. Designed to be lightning-fast, mobile-friendly, and deeply integrated with our Spring Boot backend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Live Project
 
-## Expanding the ESLint configuration
+🌐 **API:** [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)  
+🚀 **Frontend:** Coming soon to Netlify/Vercel
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Tech Stack
+
+- ⚡ **Vite** — Ultra-fast development server
+- ⚛️ **React** — Component-based frontend
+- 🎨 **Tailwind CSS** — Utility-first styling
+- 🌐 **Axios** — RESTful API consumption
+- 🧭 **React Router** — Page routing
+- 💡 **Modular Component Design** — Reusable UI components
+
+---
+
+## 🧠 Key Features
+
+- Venue grid with interactive cards
+- Detailed seat recommendation pages
+- Clean, responsive Tailwind UI
+- Real API integration with CORS-safe backend
+- 🔥 Fast build & reload via Vite
+
+---
+
+## 🚧 Project Structure
+
+```
+
+src/
+│
+├── assets/          # Static assets (logo, images)
+├── components/      # Reusable components (VenueCard)
+├── pages/           # Route-driven pages (VenuePage)
+├── App.jsx          # Main component
+├── main.jsx         # Entry point
+└── index.css        # Tailwind imports & global styles
+
+````
+
+---
+
+## 🛠️ Local Setup
+
+```bash
+# Clone the repo
+git clone https://github.com/YOUR_USERNAME/venue-ninja-client.git
+cd venue-ninja-client
+
+# Install dependencies
+npm install
+
+# Run dev server
+npm run dev
+````
+
+Visit [http://localhost:5173](http://localhost:5173)
+(Or whatever port Vite assigns.)
+
+---
+
+## 🔗 API Integration
+
+This client fetches from the Spring Boot backend at:
+
+```
+GET https://venue-ninja.onrender.com/venues
+GET https://venue-ninja.onrender.com/venues/:id
+```
+
+Make sure CORS is enabled on the backend!
+
+---
+
+## 🧪 Next Steps
+
+* [ ] Deploy to Vercel or Netlify
+* [ ] Add loading spinners and error boundaries
+* [ ] Improve mobile responsiveness
+* [ ] Add Unsplash integration for venue imagery
+* [ ] Animate cards on hover/tap
+
+---
+
+## 👨‍💻 Author
+
+**Douglas MacKrell**
+🔗 [linkedin.com/in/douglasmackrell](https://linkedin.com/in/douglasmackrell)
+
+---
+
+## 🥷 Final Word
+
+A ninja frontend doesn’t just render fast—it moves fast, adapts gracefully, and delights users without being seen. Let’s gooooooo!
